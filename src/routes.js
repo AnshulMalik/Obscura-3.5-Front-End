@@ -13,8 +13,7 @@ import WindowsLevel from './Components/Levels/Windows.react';
     import About from './Components/Landing/About.react';
     import Rules from './Components/Landing/Rules.react';
     import Contact from './Components/Landing/Contact.react';
-    
-
+    import PageNotFound from './Pages/404.react';
 
 module.exports =
     <Route path='/' component={LandingPage}>
@@ -22,7 +21,7 @@ module.exports =
         <Route path='/contact' component={Contact} />
         <Route path='/dashboard' component={DashboardPage} />
         <IndexRoute component={Intro} />
-        
+
         // Special Routes
         <Route path='/level/windows' component={WindowsLevel} />
 
@@ -33,5 +32,6 @@ module.exports =
         <Route path='/rules' component={Rules} />
         <Route path='/signup' component={SignupPage}/>
         <Route path="/encrypt" component={Encrypt} />
+        <Route path="*" component={PageNotFound} / >
     </Route>
 ;
