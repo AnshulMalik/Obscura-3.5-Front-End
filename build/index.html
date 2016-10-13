@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Obscura 3.5</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="/resources/css/nprogress.css" />
+        <link rel="stylesheet" href="/resources/css/w3.css" />
+        <link rel="stylesheet" href="/resources/css/signin.css" />
+        <link rel="stylesheet" href="/resources/css/notifications.css" />
+        <link rel="stylesheet" href="/resources/css/main.css" />
+        <link rel="stylesheet" href="/resources/css/style.css" />
+
+    </head>
+    <body>
+        <canvas width="360" height="594" style="width: 360px; height: 594px;"></canvas>
+
+        <div id="app"></div>
+        <script>
+            var postAnswer = function(answer) {
+                document.getElementById('answerSubmitButton').click();
+            }
+
+            String.prototype.format = function() {
+                var s = this,
+                    i = arguments.length;
+
+                while (i--) {
+                    s = s.replace(new RegExp('\\{' + i + '\\}', 'gm'), arguments[i]);
+                }
+                return s;
+            };
+        </script>
+
+        <script type="text/javascript" src="/resources/js/three.js"></script>
+		<script type="text/javascript" src="/resources/js/java.js"></script>
+        <script type="text/javascript" src="/resources/js/sockjs.min.js"></script>
+        <script type="text/javascript" src="/resources/js/stomp.js"></script>
+
+
+        <script>
+            var socket = new SockJS('/api/gs-guide-websocket');
+            stomp = Stomp.over(socket);
+            stomp.debug = null; 
+            stomp.connect({}, function(frame) {
+                console.log('Connected');
+                stomp.subscribe('/topic/greetings', function (greeting) {
+                    console.log(greeting.body);
+                });
+            });
+
+        </script>
+        <script src="/build/bundle.js"></script>
+        <script type="text/javascript" src="/resources/js/nprogress.js"></script>
+    </body>
+
+</html>

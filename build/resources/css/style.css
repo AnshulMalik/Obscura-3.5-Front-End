@@ -1,0 +1,24 @@
+
+body {
+    margin: 0px;
+    font-family: "adobe-clean", "adobe-clean-han-japanese", "Helvetica Neue", Helvetica, sans-serif;
+}
+.warning, .success {
+    margin-left: 10em !important;
+}
+canvas {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 100;
+    z-index: -9999;
+}
+
+.vertical-center {
+    margin: 15% auto;
+}
+#signIn #inputEnter {
+    width: 70% !important;
+}
