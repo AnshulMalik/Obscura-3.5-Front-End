@@ -72,17 +72,25 @@ var Level = React.createClass({
                     translateX: 150
                 }}
                 >
-                <center>
-                    <div className="level">
-                        <h3>{this.state.level.name}</h3>
-                        <div dangerouslySetInnerHTML={{__html: this.state.level.html}} />
-                        <img className="levelImage" id="levimg" src={this.state.level.image} usemap="#immapid"></img>
-                        <form className="levelForm" onSubmit={this.submitAnswer}>
-                            <input type="text" placeholder="Answer goes here" id="submitAnswerBox" />
-                            <button type="submit" id="answerSubmitButton">Submit</button>
-                        </form>
-                    </div>
-                </center>
+
+
+                    <section className="wrapper style1 fullscreen fade-up">
+                        <div className="inner level">
+                            <center>
+                                <h3>{this.state.level.name}</h3>
+                                <div dangerouslySetInnerHTML={{__html: this.state.level.html}} />
+                                <img className="levelImage" id="levimg" src={this.state.level.image} usemap="#immapid"></img>
+                                <form className="levelForm" onSubmit={this.submitAnswer}>
+                                    <input  type="text" placeholder="Answer goes here" id="submitAnswerBox" />
+                                    <button type="submit" id="answerSubmitButton">Submit</button>
+                                </form>
+                            </center>
+                        </div>
+                    </section>
+
+
+
+
             </Transition>
         );
     },
