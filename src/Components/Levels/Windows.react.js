@@ -9,7 +9,7 @@ var Windows = React.createClass({
 
         (function() {
             var count=0;
-            var counter=setInterval(timer, 1000); 
+            var counter=setInterval(timer, 60000); 
             var ref="Configuring updates"; 
             var side = setInterval(function() {
                 var sidebar = document.getElementById("sidebar");
