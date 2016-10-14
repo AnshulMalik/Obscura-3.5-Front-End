@@ -11,14 +11,25 @@ var Windows = React.createClass({
             var count=0;
             var counter=setInterval(timer, 1000); 
             var ref="Configuring updates"; 
-            function timer() {
-
+            var side = setInterval(function() {
                 var sidebar = document.getElementById("sidebar");
-                if(sidebar)
+                if(sidebar) {
                     sidebar.parentNode.removeChild(sidebar);
-            
+                    clearInterval(side);
+                }
+            }, 2000);
+
+              var per;
+            var listener = setInterval(function() {
+                per = document.getElementById(String.fromCharCode(116, 105, 109, 101, 114)).innerHTML;
+                if(per == String.fromCharCode(49, 52, 37)) {
+                    alert(String.fromCharCode(67, 111, 110, 103, 114, 97, 116, 117, 108, 97, 116, 105, 111, 110, 115, 44, 32, 121, 111, 117, 32, 104, 97, 118, 101, 32, 103, 111, 116, 32, 116, 104, 101, 32, 102, 108, 97, 103, 58, 32, 123, 86, 69, 82, 89, 95, 83, 116, 52, 48, 110, 71, 95, 80, 52, 115, 115, 119, 48, 114, 68, 125));
+                    clearInterval(listener);
+                }
+            }, 1000);
+            function timer() {
                 count=count+1;
-                if (count > 10) {
+                if (count > 13) {
                     clearInterval(counter);
                     return;
                 }
