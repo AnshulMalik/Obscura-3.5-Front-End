@@ -5,13 +5,18 @@ var Timer = React.createClass({
         let target_date = 1476444600000;
         let days, hours, minutes, seconds; // variables for time units
 
-        setInterval(function () { getCountdown(); }, 1000);
+        let interv = setInterval(function () { getCountdown(); }, 1000);
 
         function getCountdown(){
             let countdown = document.getElementById("tiles");
             // find the amount of "seconds" between now and target
             var current_date = new Date().getTime();
             var seconds_left = (target_date - current_date) / 1000;
+
+            if(seconds_left <= 0) {
+                clearInterval(interv);
+                window.location.pathname="/level/0";
+            }
 
             days = pad( parseInt(seconds_left / 86400) );
             seconds_left = seconds_left % 86400;
