@@ -39,7 +39,7 @@ var Dashboard = React.createClass({
                         <center>
                             <h1>Welcome to Obscura 3.5</h1>
                             < br/>
-
+                            <a href={levelUrl}><h3>Let's go</h3></a>
 
                         </center>
                     </div>
