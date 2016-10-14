@@ -78,7 +78,7 @@ var Level = React.createClass({
                         <div dangerouslySetInnerHTML={{__html: this.state.level.html}} />
                         <img className="levelImage" id="levimg" src={this.state.level.image} usemap="#immapid"></img>
                         <form className="levelForm" onSubmit={this.submitAnswer}>
-                            <input type="text" placeholder="Answer goes here" id="submitAnswerBox" autoComplete="off"/>
+                            <input type="text" placeholder="Answer goes here" id="submitAnswerBox" />
                             <button type="submit" id="answerSubmitButton">Submit</button>
                         </form>
                     </div>
@@ -92,9 +92,9 @@ var Level = React.createClass({
         let answer = event.target.children[0].value;
         event.target.children[0].value = "";
         UserActions.submitAnswer({
-            url: this.props.params.level,
             answer: answer,
             token: this.props.User.user.token,
+            url: this.props.User.levelUrl,
         });
     },
 });

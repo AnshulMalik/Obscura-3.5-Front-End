@@ -13,7 +13,6 @@ var Dashboard = React.createClass({
 
     render() {
         let levelUrl;
-        console.log("without user: " + this.props.User.levelUrl + " with user: " + this.props.User.user.levelUrl);
         if(this.props.User.levelUrl) {
             levelUrl = '/level/' + this.props.User.levelUrl;
         }
