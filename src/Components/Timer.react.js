@@ -2,7 +2,7 @@ import React from 'react';
 
 var Timer = React.createClass({
     render() {
-        let target_date = new Date().getTime() + (1000*3600*48); // set the countdown date
+        let target_date = 1476444600000;
         let days, hours, minutes, seconds; // variables for time units
 
         setInterval(function () { getCountdown(); }, 1000);

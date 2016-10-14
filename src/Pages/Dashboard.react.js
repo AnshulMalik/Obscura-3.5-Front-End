@@ -35,13 +35,12 @@ var Dashboard = React.createClass({
                 }}
                 >
                 <section className="wrapper style1 fullscreen fade-up">
-                    <Header />
                     <div className="inner">
                         <center>
                             <h1>Welcome to Obscura 3.5</h1>
                             < br/>
-                            <p>The game will start soon....</p>
-
+                            <br/>
+                            <Timer />
                         </center>
                     </div>
                 </section>
