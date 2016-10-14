@@ -12,7 +12,15 @@ var Dashboard = React.createClass({
     },
 
     render() {
-        let levelUrl = "/level/" + this.props.User.user.parentLevel; 
+        let levelUrl;
+        console.log("without user: " + this.props.User.levelUrl + " with user: " + this.props.User.user.levelUrl);
+        if(this.props.User.levelUrl) {
+            levelUrl = '/level/' + this.props.User.levelUrl;
+        }
+        else {
+            levelUrl = '/level/' + this.props.User.user.levelUrl;
+        }
+
         return (
             <Transition
                 component={false} // don't use a wrapping component

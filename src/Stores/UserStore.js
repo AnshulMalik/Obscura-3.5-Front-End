@@ -9,7 +9,8 @@ class UserStore {
     constructor() {
         this.flashMessage = ""; 
         this.isLoading = false;
-        this.user = null; 
+        this.user = null;
+        this.levelUrl = null;
         this.bindListeners({
             handleFBLogin: UserActions.FB_LOGIN,
             handleFormLogin: UserActions.FORM_LOGIN,
@@ -17,6 +18,7 @@ class UserStore {
             handleGLogin: UserActions.G_LOGIN,
             handleLogout: UserActions.LOGOUT,
             submitAnswer: UserActions.SUBMIT_ANSWER,
+            updateLevel: UserActions.UPDATE_USER_CURRENT_LEVEL,
         });
         if(localStorage.getItem('user'))
             this.user = JSON.parse(localStorage.getItem('user'));
@@ -27,7 +29,7 @@ class UserStore {
         APIService.socialLogin(data).then(response => {
             response.json().then(data => {
                 if(data.responseCode == 200) {
-                    this.setState({user: data});
+                    this.setState({user: data, level: data.level, parentLevel: data.parentLevel});
                     notify.show("Login successful", 'success', 2000);
                     localStorage.setItem('user', JSON.stringify(data));                    
                 }
@@ -52,7 +54,7 @@ class UserStore {
         APIService.formLogin(data).then(response => {
             response.json().then(data => {
                 if(data.responseCode === 200){
-                    this.setState({user: data});
+                    this.setState({user: data, level: data.level, parentLevel: data.parentLevel});
                     notify.show("Login successful", 'success', 2000);
                     localStorage.setItem('user', JSON.stringify(data));
                 }
@@ -90,7 +92,7 @@ class UserStore {
             response.json().then(data => {
                 if(data.responseCode == 200) {
                     notify.show("Signup successful", 'success', 2000);
-                    this.setState({user: data});
+                    this.setState({user: data, level: data.level, parentLevel: data.parentLevel});
                 }
                 else {
                     notify.show(response.message, 'warning', 2000);
@@ -110,7 +112,7 @@ class UserStore {
         APIService.socialLogin(data).then(response => {
             response.json().then(data => {
                 if(data.responseCode == 200) {
-                    this.setState({user: data});
+                    this.setState({user: data, level: data.level, parentLevel: data.parentLevel});
                     notify.show("Login successful, taking you to dashboard", 'success', 2000);
                   localStorage.setItem('user', JSON.stringify(data));                    
                 }
@@ -128,12 +130,11 @@ class UserStore {
 
     handleLogout() {
         localStorage.removeItem('user');
-        this.setState({user: null});
+        this.setState({user: null, level: null, parentLevel: null});
         notify.show("Logout successful", 'success', 2000);
     }
 
     submitAnswer(data) {
-        console.log(data);
         APIService.submitAnswer(data).then(response => {
             response.json().then(resp => {
                 if(resp.responseCode != 200) {
@@ -141,16 +142,18 @@ class UserStore {
                 }
                 else {
                     notify.show("Correct Answer", "success", 2000);
-                    if(resp.level)
-                        window.location.pathname = '/level/'+ resp.plevel + '/' + resp.level; 
-                    else
-                        window.location.pathname = '/level/'+ resp.plevel;                     
+                    UserActions.updateUserCurrentLevel({level: resp.level, parentLevel: resp.plevel, url: resp.url})
+                    window.location.pathname = '/level/'+ resp.url;
                 }
                 NProgress.done();
             })
         }).catch(error => {
             NProgress.done();
         });
+    }
+
+    updateLevel(data) {
+        this.setState({level: data.level, parentLevel: data.parentLevel, levelUrl: data.url});
     }
 }
 

@@ -21,17 +21,12 @@ module.exports =
         <Route path='/contact' component={Contact} />
         <Route path='/dashboard' component={DashboardPage} />
         <IndexRoute component={Intro} />
-
-        // Special Routes
-        <Route path='/level/windows' component={WindowsLevel} />
-
-        <Route path='/level/:parentLevel' component={LevelPage} />
-        <Route path='/level/:parentLevel/:level' component={LevelPage} />
+        <Route path='/level/:level' component={LevelPage} />
         <Route path='/logout' component={LogoutPage} />
         <Route path='/login' component={LoginPage}/>
         <Route path='/rules' component={Rules} />
         <Route path='/signup' component={SignupPage}/>
         <Route path="/encrypt" component={Encrypt} />
-        <Route path="*" component={PageNotFound} / >
+        <Route path="*" component={PageNotFound} />
     </Route>
 ;

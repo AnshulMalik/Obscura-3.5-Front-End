@@ -21,30 +21,21 @@ function disasemble(data) {
 
 var Level = React.createClass({
     setLevelFromResponseData(data) {
-        if(data.responseCode == 200)
-            this.setState({ level: data});
+        if(data.responseCode == 200) {
+            UserActions.updateUserCurrentLevel(data);
+            this.setState({level: data});
+        }
         else
             notify.show(data.message, 'warning', 2000);
     
     },
     getInitialState() {
-        const l = this.props.params.parentLevel;
-        const sl = this.props.params.level;
-        if(l && sl) {
-            APIService.getSubLevel(l, sl, this.props.User.user.token).then(response => {
-                response.json().then(this.setLevelFromResponseData);
-            }).catch(error => {
-                console.log("Something went wrong while fetching level info from server" + error);
-            });
-        }
-        else if(!!l) {
-            APIService.getLevel(l, this.props.User.user.token).then(response => {
-                response.json().then(this.setLevelFromResponseData);
-            }).catch(error => {
-                console.log("Something went wrong while fetching level info from server" + error);
-            });
-        }
-
+        const levelUrl = this.props.params.level;
+        APIService.getLevelByUrl(levelUrl, this.props.User.user.token).then(response => {
+            response.json().then(this.setLevelFromResponseData);
+        }).catch(error => {
+            console.log("Something went wrong while fetching level info from server" + error);
+        });
         return { level: null };
     },
 
@@ -87,7 +78,7 @@ var Level = React.createClass({
                         <div dangerouslySetInnerHTML={{__html: this.state.level.html}} />
                         <img className="levelImage" id="levimg" src={this.state.level.image} usemap="#immapid"></img>
                         <form className="levelForm" onSubmit={this.submitAnswer}>
-                            <input type="text" placeholder="Answer goes here" id="submitAnswerBox"/>
+                            <input type="text" placeholder="Answer goes here" id="submitAnswerBox" autoComplete="off"/>
                             <button type="submit" id="answerSubmitButton">Submit</button>
                         </form>
                     </div>
@@ -101,8 +92,7 @@ var Level = React.createClass({
         let answer = event.target.children[0].value;
         event.target.children[0].value = "";
         UserActions.submitAnswer({
-            level: this.props.params.level, 
-            parentLevel: this.props.params.parentLevel, 
+            url: this.props.params.level,
             answer: answer,
             token: this.props.User.user.token,
         });

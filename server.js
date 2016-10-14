@@ -27,7 +27,7 @@ app.use(WebpackHotMiddlware(compiler, {
 }))
 
 app.use('/api', function(req, res) {
-    var url = "http://anshulmalik.me/api/"+ req.url;
+    var url = "http://222.222.0.105:3007/api"+ req.url;
     console.log("requesting : " + url);
     req.pipe(request(url)).pipe(res);
 });
