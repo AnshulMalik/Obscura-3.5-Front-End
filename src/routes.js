@@ -14,6 +14,7 @@ import WindowsLevel from './Components/Levels/Windows.react';
     import Rules from './Components/Landing/Rules.react';
     import Contact from './Components/Landing/Contact.react';
     import PageNotFound from './Pages/404.react';
+    import Leaderboard from './Components/Leaderboard.react.js';
 
 module.exports =
     <Route path='/' component={LandingPage}>
@@ -27,6 +28,7 @@ module.exports =
         <Route path='/rules' component={Rules} />
         <Route path='/signup' component={SignupPage}/>
         <Route path="/encrypt" component={Encrypt} />
+        <Route path='/leaderboard'component={Leaderboard} />
         <Route path="*" component={PageNotFound} />
     </Route>
 ;

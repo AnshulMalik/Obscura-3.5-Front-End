@@ -39,9 +39,8 @@ var Dashboard = React.createClass({
                         <center>
                             <h1>Welcome to Obscura 3.5</h1>
                             < br/>
-                            <br/>
 
-                            <Timer />
+
                         </center>
                     </div>
                 </section>

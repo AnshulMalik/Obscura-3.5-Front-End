@@ -81,7 +81,7 @@ var Level = React.createClass({
                                 <div dangerouslySetInnerHTML={{__html: this.state.level.html}} />
                                 <img className="levelImage" id="levimg" src={this.state.level.image} usemap="#immapid"></img>
                                 <form className="levelForm" onSubmit={this.submitAnswer}>
-                                    <input  type="text" placeholder="Answer goes here" id="submitAnswerBox" />
+                                    <input  type="text" placeholder="Answer goes here" id="submitAnswerBox" autoComplete="off"/>
                                     <button type="submit" id="answerSubmitButton">Submit</button>
                                 </form>
                             </center>
