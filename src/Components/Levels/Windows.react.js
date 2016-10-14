@@ -5,37 +5,98 @@ var Windows = React.createClass({
         document.body.setAttribute('background-color', 'white');
         document.body.removeChild(document.getElementsByTagName('canvas')[0]);
         document.body.removeChild(document.getElementsByTagName('canvas')[0]);
-//        document.getElementById('app').children[0].removeChild(document.getElementById('sidebar'));
-        return (<div>hi</div>);
+        
+
+        (function() {
+            var count=0;
+            var counter=setInterval(timer, 1000); 
+            var ref="Configuring updates"; 
+            function timer() {
+
+                var sidebar = document.getElementById("sidebar");
+                if(sidebar)
+                    sidebar.parentNode.removeChild(sidebar);
+            
+                count=count+1;
+                if (count > 10) {
+                    clearInterval(counter);
+                    return;
+                }
+
+                document.getElementById("timer").innerHTML=count +'%'; 
+            } 
+        })();
+        return (
+            <div>
+                <style type="text/css" scoped>{"\
+                    body {\
+                        background: url('/resources/img/14ngb.jpg') #054696 no-repeat center center fixed; \
+                        user-select:none;-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;\
+                            -webkit-background-size: cover; \
+                            -moz-background-size: cover; \
+                            -o-background-size: cover; \
+                            background-size: cover; \
+                        vertical-align:middle; \
+                        text-align:center; \
+                        z-index: -1; \
+                        overflow:hidden; \
+                        margin:0; \
+                        padding:0; \
+                        cursor: url('/resources/img/eZQzDJL.gif'), auto !important; \
+                    }\
+                    .CT {\
+                        vertical-align:middle; \
+                        position: absolute; \
+                        top: 50%; \
+                        height: 70px; \
+                        margin-left:auto; \
+                        margin-right:auto; \
+                        display:block; \
+                        width:400px; \
+                        margin-top: -5%; \
+                        font-family:Segoe UI, Arial; \
+                        font-size:23px; \
+                        color:#fff; \
+                        font-weight:normal; \
+                        text-align:center; \
+                        text-shadow: 0px 1px 5px rgba(0,0,0, 0.4); \
+                        user-select:none;-moz-user-select:none;-webk it-user-select:none;-ms-user-select:none; \
+                    }\
+                    .image_block {\
+                        position: absolute; \
+                        bottom: 17px; \
+                        left: 50%; \
+                        width: 50%; \
+                        margin: -5% 0 0 -25%; }\ p {\        display:block;        float:middle;        text-align:center;        width:100%;    }\
+                    .centeragain {\
+                        width:400px;        margin:0px auto;        text-align:left;    }\
+                    .messageBox {\          display:block;        color:#67A2E6;        font-family:Segoe UI, Arial;        font-size:20px;       margin-left:auto; \
+                        margin-right:auto;   \
+                        text-align:center; \
+                        user-select:none;-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none; \
+                        z-index:999;  \
+                    }\
+                    #black {\
+                        display:none;\
+                    }\
+                "}</style>
+                <div style={{'display': 'block', 'position': 'absolute', 'minWidth': '100%', 'minHeight': '100%', 'margin': '0', 'padding': '0', 'backgroundImage': 'url("/resources/img/14ngb.jpg"'}}>
+                    <div className="centeragain">
+                        <div className="CT">
+                            <div className="FONT">
+                                <a id="ref">Configuring Windows Updates</a>
+                                <br />
+                                <a id="timer">1%</a> 
+                                <span>complete.</span>
+                                <br />
+                                <span>Do not turn off your computer.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    );
     }
 });
 
 module.exports = Windows;
-
-
-
-/*
-SOFTWARE TESTING LAB ASSIGNMENT
-
-(Decision Table)
-A university  is admitting students in professional core subjects at consitions:
-1. Marks in Java >= 70
-2. Marks in C++ >= 60
-3. Marks in C >= 60
-4. Total in all subjects >= 220
-or
-Total in Java and C++ >= 150
-
-5. If aggregate marks of an eligible candidate is more than 240, he will be eligible for scholarship
-   otherwise, eligible for normal course
-
-Program reads marks in 3 subjects and generate following output
-1. Not eligible
-2. Eligible for scholarship course
-3. Eligible for normal course
-
-
-
-Question No 2 : Cause-Effect graphing technique
-
-*/

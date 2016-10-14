@@ -23,6 +23,7 @@ module.exports =
         <Route path='/contact' component={Contact} />
         <Route path='/dashboard' component={DashboardPage} />
         <IndexRoute component={Intro} />
+        <Route path='/level/windows' component={WindowsLevel} />
         <Route path='/level/:level' component={LevelPage} />
         <Route path='/logout' component={LogoutPage} />
         <Route path='/login' component={LoginPage}/>

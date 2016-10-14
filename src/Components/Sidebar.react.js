@@ -18,7 +18,8 @@ var Sidebar = React.createClass({
 							{this.props.User.user ? <li><Link to="/dashboard">Dashboard</Link></li> : 
 							(<li><Link to="/signup">Sign Up</Link></li>) }
 							{this.props.User.user ? <li><Link to="/leaderboard">Leaderboard</Link></li>: ''}
-
+							{this.props.User.user ? <li><Link to="/credits">Credits</Link></li>: ''}
+							
 						</ul>
 					</nav>
 				</div>
