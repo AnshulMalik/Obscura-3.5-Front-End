@@ -17,6 +17,7 @@ var Sidebar = React.createClass({
 								(<li><Link to="/logout">Logout</Link></li>) :  (<li><Link to="/login">Sign In</Link></li>) }
 							{this.props.User.user ? <li><Link to="/dashboard">Dashboard</Link></li> : 
 							(<li><Link to="/signup">Sign Up</Link></li>) }
+							{this.props.User.user ? <li><Link to="/leaderboard">Leaderboard</Link></li>: ''}
 
 						</ul>
 					</nav>
