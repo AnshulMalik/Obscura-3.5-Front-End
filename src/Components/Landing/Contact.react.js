@@ -22,16 +22,17 @@ var Contact = React.createClass({
                     <div className="inner">
                         <center><h2>Get in touch</h2>
                             <div className=" style1">
-                            <section>
-                                <ul className="contact">
-                                    <li>
-                                        <ul className="icons">
-                                            <li><a href="http://www.facebook.com/arucsbo" className="fa-facebook" style={{'fontSize':'100px'}}><span className="label">Facebook</span></a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </section>
-                        </div></center>
+                                <section>
+                                    <ul className="contact">
+                                        <li>
+                                            <ul className="icons">
+                                                <li><a href="http://www.facebook.com/arucsbo" target="_blank" className="fa-facebook" style={{'fontSize':'100px'}}><span className="label">Facebook</span></a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </section>
+                            </div>
+                        </center>
                     </div>
                 </section>
             </Transition>
