@@ -10,9 +10,15 @@ var endpoints = {
     SIGNUP: API_HOME + 'signup/',
     SOCIAL_LOGIN: API_HOME + 'socialLogin/',
     SUBMIT_ANSWER: API_HOME + 'submitAnswer/',
+    LEADERBOARD: API_HOME + 'leaderboard/',
 }
 
 var APIService = {
+
+    getLeaderboard() {
+        NProgress.start();
+        return fetch(endpoints.LEADERBOARD);
+    },
     
     formLogin(data) {
         NProgress.start();
