@@ -33,6 +33,7 @@ var Dashboard = React.createClass({
                             <h1>Welcome to Obscura 3.5</h1>
                             < br/>
                             <p>The game will start soon....</p>
+                            <Link to={levelUrl}>Let's Go</Link>
                         </center>
                     </div>
                 </section>
@@ -43,4 +44,3 @@ var Dashboard = React.createClass({
 
 
 module.exports = withRouter(Dashboard);
-// <Link to={levelUrl}>Let's Go</Link>
