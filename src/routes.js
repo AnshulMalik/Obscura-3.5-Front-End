@@ -16,6 +16,7 @@ import WindowsLevel from './Components/Levels/Windows.react';
     import PageNotFound from './Pages/404.react';
     import Leaderboard from './Components/Leaderboard.react.js';
     import Credits from './Components/Credits.react';
+    import tempLevel from './Components/Levels/17.react';
 
 module.exports =
     <Route path='/' component={LandingPage}>
@@ -23,6 +24,7 @@ module.exports =
         <Route path='/contact' component={Contact} />
         <Route path='/dashboard' component={DashboardPage} />
         <IndexRoute component={Intro} />
+        <Route path='/level/17_1' component={tempLevel} /> 
         <Route path='/level/windows' component={WindowsLevel} />
         <Route path='/level/:level' component={LevelPage} />
         <Route path='/logout' component={LogoutPage} />

@@ -153,7 +153,17 @@ class UserStore {
     }
 
     updateLevel(data) {
-        this.setState({level: data.level, parentLevel: data.parentLevel, levelUrl: data.url});
+        var tempuser = this.user;
+        if(tempuser) {
+            tempuser.level = data.level;
+            tempuser.parentLevel = data.parentLevel;
+            tempuser.levelUrl = data.url;
+            localStorage.setItem('user', JSON.stringify(tempuser));
+            this.setState({level: data.level, parentLevel: data.parentLevel, levelUrl: data.url, user: tempuser});
+        }
+        else {
+            this.setState({level: data.level, parentLevel: data.parentLevel, levelUrl: data.url});
+        }
     }
 }
 

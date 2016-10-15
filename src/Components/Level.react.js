@@ -74,7 +74,7 @@ var Level = React.createClass({
                 >
 
 
-                    <section className="wrapper style1 fullscreen fade-up">
+                    <section key={1} className="wrapper style1 fullscreen fade-up">
                         <div className="inner level">
                             <center>
                                 <h3>{this.state.level.name}</h3>
@@ -99,6 +99,11 @@ var Level = React.createClass({
         event.preventDefault();
         let answer = event.target.children[0].value;
         event.target.children[0].value = "";
+        console.log({
+            answer: answer,
+            token: this.props.User.user.token,
+            url: this.props.User.levelUrl,
+        });
         UserActions.submitAnswer({
             answer: answer,
             token: this.props.User.user.token,
