@@ -28,13 +28,21 @@ var A = React.createClass({
                 >
                     <section key={1} className="wrapper style1 fullscreen fade-up">
                         <div className="inner level">
+                            
                             <center>
-                                <div>
-                                    <img src = "/resources/img/17/1/0.jpg"  style={{'display': 'inline', 'padding': '15px'}} onClick={this.rotate}/>
-                                    <img src = "/resources/img/17/2/0.jpg"  style={{'display': 'inline', 'padding': '15px'}} onClick={this.rotate}/>
-                                    <img src = "/resources/img/17/3/0.jpg"  style={{'display': 'inline', 'padding': '15px'}} onClick={this.rotate}/>
-                                    <img src = "/resources/img/17/4/0.jpg"  style={{'display': 'inline', 'padding': '15px'}} onClick={this.rotate}/>
-                                </div>
+                                <p className="hidden">
+                                    An empty hole from above<br />
+                                    Unfulfilled promises from below <br />
+                                    Devoid of water its basic need <br />
+                                    It sits above empty and very thirsty <br />
+                                    Every year you'll hear them say <br />
+                                    There'll be a grand opening this may <br />
+                                </p>
+                                <h1>7404807121</h1>
+                                <h2>
+                                Call me or<br /> rather <br /> don't 
+                                </h2>
+                                Watashi wa anata no basho o yokyu shimasu
                                 <form className="levelForm" onSubmit={this.submitAnswer}>
                                     <input  type="text" placeholder="Answer goes here" id="submitAnswerBox" autoComplete="off"/>
                                     <button type="submit" id="answerSubmitButton">Submit</button>
@@ -44,33 +52,7 @@ var A = React.createClass({
                     </section>
             </Transition>
         );
-    },
-    rotate(event) {
-        let c = '/resources/img/17';
-        let arr = event.target.src.split('/');
-        let cur = parseInt(arr[7].split('.')[0]);
-        event.target.src = c + '/' + arr[6] + '/' + (cur + 90) % 360 + '.jpg';
-    },
-
-    final() {
-        event.target.children[0].value = "";
-        UserActions.submitAnswer({
-            answer: answer,
-            token: this.props.User.user.token,
-            url: '17_1',
-        });
-    },
-
-    submitAnswer(event) {
-        event.preventDefault();
-        let answer = event.target.children[0].value;
-        event.target.children[0].value = "";
-        UserActions.submitAnswer({
-            answer: answer,
-            token: this.props.User.user.token,
-            url: '17_1',
-        });
-    },
+    }
 
 });
 

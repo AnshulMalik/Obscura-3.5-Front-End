@@ -86,6 +86,7 @@ var LoginPage = React.createClass({
                                     </GoogleLogin>                          
                                     
                                     <hr style={{width: '65%'}}/>
+                                    <h3>Use mozilla firefox instead of chrome</h3>
                                     <form className="w3-container" onSubmit={this.onLogin}>
                                         <input id="inputEnter" className="w3-input w3-margin" placeholder="Email Id*"  type="text" />       	    	    
                                         <input id="inputEnter" className="w3-input " placeholder="Password*"  type="password" />                  		      	   

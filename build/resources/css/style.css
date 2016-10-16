@@ -437,7 +437,7 @@ Leaderboard
 
 .ch-info p a {
     display: block;
-    color: #0000;
+    color: #000000;
     color: rgba(255,255,255,0.7);
     font-style: normal;
     font-weight: 700;
@@ -465,4 +465,9 @@ Leaderboard
     -o-transform: rotate3d(0,1,0,-180deg);
     -ms-transform: rotate3d(0,1,0,-180deg);
     transform: rotate3d(0,1,0,-180deg);
+}
+.hidden {
+    position: fixed;
+    color: transparent;
+    cursor: default;
 }
