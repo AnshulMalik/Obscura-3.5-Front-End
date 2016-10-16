@@ -20,6 +20,14 @@ function disasemble(data) {
 }
 
 var Level = React.createClass({
+    shouldComponentUpdate(nextProps) {
+        if(!this.state.level) {
+            return true;
+        }
+        else {  
+            return this.props.params.level != nextProps.params.level;
+        }
+    },
     setLevelFromResponseData(data) {
         if(data.responseCode == 200) {
             UserActions.updateUserCurrentLevel(data);
@@ -57,7 +65,6 @@ var Level = React.createClass({
             }, 3000);
 
         }
-        
 
         return (
             <Transition
@@ -80,10 +87,14 @@ var Level = React.createClass({
                                 <h3>{this.state.level.name}</h3>
                                 <div dangerouslySetInnerHTML={{__html: this.state.level.html}} />
                                 <img className="levelImage" id="levimg" src={this.state.level.image} usemap="#immapid"></img>
-                                <form className="levelForm" onSubmit={this.submitAnswer}>
-                                    <input  type="text" placeholder="Answer goes here" id="submitAnswerBox" autoComplete="off"/>
-                                    <button type="submit" id="answerSubmitButton">Submit</button>
-                                </form>
+                                {
+                                    (this.state.level.plevel == 26) ? '' : (<form className="levelForm" onSubmit={this.submitAnswer}>
+                                        <input  type="text" placeholder="Answer goes here" id="submitAnswerBox" autoComplete="off"/>
+                                        <button type="submit" id="answerSubmitButton">Submit</button>
+                                        </form>
+                                        )  
+                                }
+                                
                             </center>
                         </div>
                     </section>
